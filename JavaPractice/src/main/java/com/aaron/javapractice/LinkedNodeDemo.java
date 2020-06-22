@@ -1,4 +1,8 @@
 package com.aaron.javapractice;
+
+import java.util.LinkedList;
+import java.util.Stack;
+
 /**
  * ${DESCRIPTION}
  *
@@ -14,7 +18,7 @@ public class LinkedNodeDemo {
 
     public void test() {
 
-        Node head = initLinkedList(10);
+        Node head = initLinkedList(5);
 
         printLinkedList(head);
 
@@ -25,30 +29,50 @@ public class LinkedNodeDemo {
         printLinkedList(node);
     }
 
-    /**反转链表**/
+    /**原地反转链表**/
     private Node reverseLinkedList(Node head) {
         if (head == null || head.next==null) {
             return head;
         }
-
         Node prev = null;
         Node next = null;
-        while(head.next!=null) {
+        while(head!=null) {
             next = head.next;   //保存下一个节点
             head.next = prev;   //重置next
             prev = head;    //保存当前节点
             head = next;
         }
-        head.next = prev;
-        return head;
+        return prev;
+    }
+
+    private Node reverseByStack(Node head) {
+        if(head == null || head.next == null) {
+            return  head;
+        }
+        Stack<Node>  stack = new Stack<>();
+        Node cur = head;
+        while (cur != null) {
+            stack.push(cur);
+            cur = cur.next;
+        }
+        Node newHead = stack.pop();
+        Node next = newHead;
+        while (stack.size() != 0) {
+            next.next = stack.pop();
+            next = next.next;
+
+        }
+        next.next = null;
+        return  newHead;
+
     }
 
     /**初始化链表**/
     private Node initLinkedList(int num) {
-        Node head = new Node(0, null);
+        Node head = new Node(0);
         Node cur = head;
         for(int i=1; i<num;i++){
-            cur.next = new Node(i, null);
+            cur.next = new Node(i);
             cur = cur.next;
         }
         return head;
@@ -70,9 +94,8 @@ public class LinkedNodeDemo {
 
         public Node() {
         }
-        public Node(T value, Node<T> next) {
+        public Node(T value) {
             this.value = value;
-            this.next = next;
         }
     }
 
