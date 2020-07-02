@@ -17,12 +17,6 @@
  */
 package com.aaron.javapractice;
 
-class ListNode {
-    int val;
-    ListNode next;
-    ListNode(int x) {val = x;}
-}
-
 public class TwoNumSum {
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {

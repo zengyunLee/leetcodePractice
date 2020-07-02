@@ -36,7 +36,7 @@ public class LinkedNodeDemo {
         }
         Node prev = null;
         Node next = null;
-        while(head!=null) {
+        while (head != null) {
             next = head.next;   //保存下一个节点
             head.next = prev;   //重置next
             prev = head;    //保存当前节点
