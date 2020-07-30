@@ -1,7 +1,4 @@
-package com.aaron.javapractice;
-
-import java.util.LinkedList;
-import java.util.Queue;
+package com.aaron.javapractice.BinaryTree;
 
 public class binaryTree {
     private final String inputStr0 = "1-2--3--4-5--6--7";

@@ -23,6 +23,9 @@ public class DelNode {
         for(int i = 0; i < n; i++) {
             frontNode = frontNode.next;
         }
+        if(frontNode == null) {
+            return head.next;
+        }
         while(frontNode.next != null) {
             frontNode = frontNode.next;
             targetNode = targetNode.next;
